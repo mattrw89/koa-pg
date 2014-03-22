@@ -26,8 +26,7 @@ module.exports = function(opts) {
     return function *koaPg(next) {
         // set up where we store all the DB connections
         this.pg = this.pg || {};
-
-        var connect = yield pg.connect_(opts.conStr)
+        var connect = yield pg.connect_(opts.connection)
         this.pg[opts.name] = {
             client : connect[0],
             done   : connect[1],
