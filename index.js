@@ -28,18 +28,18 @@ module.exports = function(opts) {
         this.pg = this.pg || {};
 
         //From http://ivc.com/blog/better-sql-strings-in-io-js-nodejs-part-2/
-        this.pg.sqltpl = function (pieces) {
-            var result = '';
-            var vals = [];
-            var substitutions = [].slice.call(arguments, 1);
-            for (var i = 0; i < substitutions.length; ++i) {
-                result += pieces[i] + '$' + (i + 1);
-                vals.push(substitutions[i]);
-            }
+        // this.pg.sqltpl = function (pieces) {
+        //     var result = '';
+        //     var vals = [];
+        //     var substitutions = [].slice.call(arguments, 1);
+        //     for (var i = 0; i < substitutions.length; ++i) {
+        //         result += pieces[i] + '$' + (i + 1);
+        //         vals.push(substitutions[i]);
+        //     }
 
-            result += pieces[substitutions.length];
-            return {text: result, values: vals};
-        };
+        //     result += pieces[substitutions.length];
+        //     return {text: result, values: vals};
+        // };
 
         var connectionResults = yield pg.connectPromise(opts.connection);
 
